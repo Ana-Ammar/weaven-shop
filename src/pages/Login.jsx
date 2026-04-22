@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
+import { motion } from "framer-motion";
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -18,13 +19,23 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center bg-base-200 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="flex-col w-full max-w-md">
+    <div className="min-h-[80vh] flex items-center justify-center bg-rich-base py-12 px-4 sm:px-6 lg:px-8">
+      <motion.div
+        className="flex-col w-full max-w-md"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <div className="text-center mb-8">
           <h1 className="text-5xl font-bold">Login now!</h1>
           <p className="py-6">Access your account to manage your orders and wishlist.</p>
         </div>
-        <div className="card w-full shadow-2xl bg-base-100">
+        <motion.div
+          className="card w-full shadow-2xl bg-rich-card"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <label className="label">
@@ -33,7 +44,7 @@ export default function Login() {
               <input 
                 type="email" 
                 placeholder="email" 
-                className="input input-bordered" 
+                className="input input-bordered bg-rich-base border-rich-card-hover text-rich-text" 
                 {...register("email", { required: true })}
               />
               {errors.email && <span className="text-error text-sm mt-1">Email is required</span>}
@@ -45,7 +56,7 @@ export default function Login() {
               <input 
                 type="password" 
                 placeholder="password" 
-                className="input input-bordered" 
+                className="input input-bordered bg-rich-base border-rich-card-hover text-rich-text" 
                 {...register("password", { required: true })}
               />
               {errors.password && <span className="text-error text-sm mt-1">Password is required</span>}
@@ -54,14 +65,14 @@ export default function Login() {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary" type="submit">Login</button>
+              <button className="btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover" type="submit">Login</button>
             </div>
             <p className="text-center text-sm mt-4">
-              Don't have an account? <Link to="/signup" className="text-primary font-bold hover:underline">Sign up</Link>
+              Don't have an account? <Link to="/signup" className="text-rich-accent font-bold hover:underline">Sign up</Link>
             </p>
           </form>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

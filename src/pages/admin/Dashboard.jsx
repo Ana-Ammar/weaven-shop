@@ -4,26 +4,26 @@ export default function Dashboard() {
       <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="stat bg-base-100 shadow rounded-xl border-t-4 border-primary">
-          <div className="stat-title">Total Products</div>
-          <div className="stat-value text-primary">124</div>
+        <div className="stat bg-rich-card shadow rounded-xl border-t-4 border-rich-accent">
+          <div className="stat-title text-rich-text-muted">Total Products</div>
+          <div className="stat-value text-rich-accent">124</div>
           <div className="stat-desc">21% more than last month</div>
         </div>
         
-        <div className="stat bg-base-100 shadow rounded-xl border-t-4 border-secondary">
-          <div className="stat-title">Total Sales</div>
-          <div className="stat-value text-secondary">$14,200</div>
+        <div className="stat bg-rich-card shadow rounded-xl border-t-4 border-rich-text-muted">
+          <div className="stat-title text-rich-text-muted">Total Sales</div>
+          <div className="stat-value text-rich-text-muted">$14,200</div>
           <div className="stat-desc">4% more than last month</div>
         </div>
         
-        <div className="stat bg-base-100 shadow rounded-xl border-t-4 border-accent">
-          <div className="stat-title">Active Users</div>
-          <div className="stat-value text-accent">1,200</div>
+        <div className="stat bg-rich-card shadow rounded-xl border-t-4 border-rich-accent-hover">
+          <div className="stat-title text-rich-text-muted">Active Users</div>
+          <div className="stat-value text-rich-accent-hover">1,200</div>
           <div className="stat-desc">8% more than last month</div>
         </div>
       </div>
 
-      <div className="mt-12 bg-base-100 p-6 rounded-xl shadow">
+      <div className="mt-12 bg-rich-card p-6 rounded-xl shadow">
         <h2 className="text-xl font-bold mb-4">Recent Orders</h2>
         <div className="overflow-x-auto">
           <table className="table w-full">

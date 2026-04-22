@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 import { ShoppingCart, MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -47,7 +48,7 @@ export default function ProductDetails() {
   }, [id]);
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center"><span className="loading loading-spinner loading-lg text-primary"></span></div>;
+    return <div className="min-h-screen flex items-center justify-center"><span className="loading loading-spinner loading-lg text-rich-accent"></span></div>;
   }
 
   if (!product) {
@@ -77,31 +78,41 @@ export default function ProductDetails() {
     <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 min-h-[80vh]">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Image Gallery */}
-        <div className="flex flex-col-reverse lg:flex-row gap-4">
+        <motion.div
+          className="flex flex-col-reverse lg:flex-row gap-4"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           {/* Thumbnails */}
           <div className="flex lg:flex-col gap-4 overflow-x-auto lg:overflow-y-auto lg:w-24 shrink-0">
             {mockImages.map((img, idx) => (
               <button
                 key={idx}
                 onClick={() => setMainImage(img)}
-                className={`border-2 rounded-lg overflow-hidden shrink-0 ${mainImage === img ? 'border-primary' : 'border-transparent'}`}
+                className={`border-2 rounded-lg overflow-hidden shrink-0 ${mainImage === img ? 'border-rich-accent' : 'border-transparent'}`}
               >
                 <img src={img} alt={`Thumbnail ${idx}`} className="w-20 h-24 object-cover" />
               </button>
             ))}
           </div>
           {/* Main Image */}
-          <div className="w-full bg-base-200 rounded-2xl overflow-hidden aspect-[4/5] flex items-center justify-center">
+          <div className="w-full bg-rich-card rounded-2xl overflow-hidden aspect-[4/5] flex items-center justify-center">
             <img src={mainImage} alt={product.title} className="w-full h-full object-cover" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Product Info */}
-        <div className="flex flex-col">
+        <motion.div
+          className="flex flex-col"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+        >
           <h1 className="text-3xl sm:text-4xl font-bold mb-2">{product.title}</h1>
 
           <div className="flex items-center gap-4 mb-6">
-            <div className="text-2xl font-bold text-primary">${product.price}</div>
+            <div className="text-2xl font-bold text-rich-accent">${product.price}</div>
             {inStock ? (
               <div className="badge badge-success text-white font-semibold">In Stock</div>
             ) : (
@@ -109,7 +120,7 @@ export default function ProductDetails() {
             )}
           </div>
 
-          <div className="prose prose-sm mb-8">
+          <div className="prose prose-sm mb-8 text-rich-text-muted">
             <p>{product.description}</p>
           </div>
 
@@ -123,7 +134,7 @@ export default function ProductDetails() {
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`btn btn-circle btn-outline ${selectedSize === size ? 'bg-primary text-primary-content border-primary' : ''}`}
+                  className={`btn btn-circle btn-outline border-rich-card text-rich-text shadow-none ${selectedSize === size ? 'bg-rich-accent text-white border-rich-accent' : ''}`}
                 >
                   {size}
                 </button>
@@ -135,7 +146,7 @@ export default function ProductDetails() {
           <div className="mb-8">
             <h3 className="text-sm font-medium mb-3">Quantity</h3>
             <div className="flex items-center gap-4">
-              <div className="join border border-base-300 rounded-lg">
+              <div className="join border border-rich-card-hover rounded-lg">
                 <button className="join-item btn btn-ghost" onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
                 <input className="join-item input input-ghost w-16 text-center pointer-events-none" value={quantity} readOnly />
                 <button className="join-item btn btn-ghost" onClick={() => setQuantity(quantity + 1)}>+</button>
@@ -145,14 +156,14 @@ export default function ProductDetails() {
 
           {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <button className="btn btn-primary flex-1 btn-lg" disabled={!inStock}>
+            <button className="btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover flex-1 btn-lg" disabled={!inStock}>
               <ShoppingCart className="w-5 h-5 mr-2" />
               {inStock ? "Add to Cart" : "Out of Stock"}
             </button>
           </div>
 
           {/* Contact Actions */}
-          <div className="bg-base-200 p-6 rounded-xl">
+          <div className="bg-rich-card p-6 rounded-xl">
             <h3 className="font-semibold mb-4 text-center">Have questions? Contact us directly!</h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={handleWhatsapp} className="btn bg-[#25D366] hover:bg-[#128C7E] text-white border-none flex-1">
@@ -162,7 +173,7 @@ export default function ProductDetails() {
             </div>
           </div>
 
-        </div>
+        </motion.div>
       </div>
     </div>
   );

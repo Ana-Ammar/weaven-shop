@@ -34,19 +34,19 @@ export default function AdminProducts() {
   };
 
   if (loading) {
-    return <div className="flex justify-center p-12"><span className="loading loading-spinner text-primary"></span></div>;
+    return <div className="flex justify-center p-12"><span className="loading loading-spinner text-rich-accent"></span></div>;
   }
 
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">All Products</h1>
-        <div className="badge badge-primary badge-lg">{products.length} Items</div>
+        <div className="badge bg-rich-accent text-white border-none badge-lg">{products.length} Items</div>
       </div>
 
-      <div className="bg-base-100 rounded-xl shadow overflow-hidden">
+      <div className="bg-rich-card rounded-xl shadow overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="table table-zebra w-full">
+          <table className="table w-full">
             <thead>
               <tr>
                 <th>Image</th>
@@ -77,14 +77,14 @@ export default function AdminProducts() {
                     <td>${product.price}</td>
                     <td>
                       {product.isPopular ? (
-                        <div className="badge badge-secondary badge-sm">Yes</div>
+                        <div className="badge bg-rich-accent text-white border-none badge-sm">Yes</div>
                       ) : (
                         <div className="badge badge-ghost badge-sm">No</div>
                       )}
                     </td>
                     <td>
                       <div className="flex gap-2">
-                        <button className="btn btn-sm btn-square btn-ghost text-primary">
+                        <button className="btn btn-sm btn-square btn-ghost text-rich-accent">
                           <Edit className="w-4 h-4" />
                         </button>
                         <button onClick={() => handleDelete(product._id)} className="btn btn-sm btn-square btn-ghost text-error">

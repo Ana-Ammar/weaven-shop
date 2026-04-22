@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "../components/products/ProductCard";
+import { motion } from "framer-motion";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -35,17 +36,29 @@ export default function Products() {
 
   return (
     <div className="py-12 px-4 max-w-7xl mx-auto min-h-screen">
-      <div className="text-center mb-12">
+      <motion.div
+        className="text-center mb-12"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <h1 className="text-4xl font-bold mb-4">All Products</h1>
-        <p className="text-gray-500">Browse our complete collection of premium clothing.</p>
-      </div>
+        <p className="text-rich-text-muted">Browse our complete collection of premium clothing.</p>
+      </motion.div>
 
       {loading ? (
-        <div className="flex justify-center py-20"><span className="loading loading-spinner loading-lg text-primary"></span></div>
+        <div className="flex justify-center py-20"><span className="loading loading-spinner loading-lg text-rich-accent"></span></div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {displayProducts.map(product => (
-            <ProductCard key={product._id} product={product} />
+          {displayProducts.map((product, index) => (
+            <motion.div
+              key={product._id}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.06 }}
+            >
+              <ProductCard product={product} />
+            </motion.div>
           ))}
         </div>
       )}

@@ -43,7 +43,7 @@ export default function AddProduct() {
     <div className="max-w-2xl mx-auto">
       <h1 className="text-3xl font-bold mb-8">Add New Product</h1>
       
-      <div className="bg-base-100 p-8 rounded-xl shadow-lg">
+      <div className="bg-rich-card p-8 rounded-xl shadow-lg">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           
           <div className="form-control w-full">
@@ -51,7 +51,7 @@ export default function AddProduct() {
             <input 
               type="text" 
               placeholder="e.g. Premium Cotton T-Shirt" 
-              className="input input-bordered w-full" 
+              className="input input-bordered w-full bg-rich-base border-rich-card-hover text-rich-text" 
               {...register("title", { required: true })}
             />
             {errors.title && <span className="text-error text-sm mt-1">Title is required</span>}
@@ -64,7 +64,7 @@ export default function AddProduct() {
                 type="number" 
                 step="0.01" 
                 placeholder="e.g. 29.99" 
-                className="input input-bordered w-full" 
+                className="input input-bordered w-full bg-rich-base border-rich-card-hover text-rich-text" 
                 {...register("price", { required: true, min: 0 })}
               />
               {errors.price && <span className="text-error text-sm mt-1">Valid price is required</span>}
@@ -72,7 +72,7 @@ export default function AddProduct() {
 
             <div className="form-control w-full">
               <label className="label"><span className="label-text font-semibold">Category</span></label>
-              <select className="select select-bordered" {...register("category", { required: true })}>
+              <select className="select select-bordered bg-rich-base border-rich-card-hover text-rich-text" {...register("category", { required: true })}>
                 <option value="">Select Category</option>
                 <option value="Men">Men</option>
                 <option value="Women">Women</option>
@@ -88,7 +88,7 @@ export default function AddProduct() {
               <input 
                 type="number" 
                 placeholder="e.g. 5" 
-                className="input input-bordered w-full" 
+                className="input input-bordered w-full bg-rich-base border-rich-card-hover text-rich-text" 
                 {...register("quantity", { required: true, min: 0 })}
               />
               {errors.quantity && <span className="text-error text-sm mt-1">Valid quantity is required</span>}
@@ -112,7 +112,7 @@ export default function AddProduct() {
             <input 
               type="url" 
               placeholder="https://example.com/image.jpg" 
-              className="input input-bordered w-full" 
+              className="input input-bordered w-full bg-rich-base border-rich-card-hover text-rich-text" 
               {...register("imageUrl", { required: true })}
             />
             {errors.imageUrl && <span className="text-error text-sm mt-1">Image URL is required</span>}
@@ -121,7 +121,7 @@ export default function AddProduct() {
           <div className="form-control">
             <label className="label"><span className="label-text font-semibold">Description</span></label>
             <textarea 
-              className="textarea textarea-bordered h-24" 
+              className="textarea textarea-bordered h-24 bg-rich-base border-rich-card-hover text-rich-text" 
               placeholder="Product description..."
               {...register("description", { required: true })}
             ></textarea>
@@ -138,7 +138,7 @@ export default function AddProduct() {
           <div className="mt-8">
             <button 
               type="submit" 
-              className={`btn btn-primary w-full ${isSubmitting ? 'loading' : ''}`}
+              className={`btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover w-full ${isSubmitting ? 'loading' : ''}`}
               disabled={isSubmitting}
             >
               Add Product

@@ -51,8 +51,8 @@ export default function Banner() {
                 className="hero h-full w-full bg-cover bg-center"
                 style={{ backgroundImage: `url(${slide.image})` }}
               >
-                <div className="hero-overlay bg-opacity-60 bg-black"></div>
-                <div className="hero-content text-center text-neutral-content relative z-10">
+                <div className="hero-overlay bg-opacity-80 bg-rich-base"></div>
+                <div className="hero-content text-center text-rich-text relative z-10">
                   <div className="max-w-md">
                     {isActive && (
                       <motion.div
@@ -71,7 +71,7 @@ export default function Banner() {
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.5, delay: 0.8 }}
                         >
-                          <Link to="/products" className="btn btn-primary btn-lg shadow-xl shadow-primary/30 hover:scale-105 transition-transform">
+                          <Link to="/products" className="btn bg-rich-accent text-white border-none shadow-none btn-lg hover:scale-105 transition-transform hover:bg-rich-accent-hover">
                             Shop Now
                           </Link>
                         </motion.div>
