@@ -44,6 +44,11 @@ export default function AdminLayout() {
               <PlusCircle className="w-5 h-5" /> Add Product
             </Link>
           </li>
+          <li>
+            <Link to="/admin/banners">
+              <PlusCircle className="w-5 h-5" /> Manage Banners
+            </Link>
+          </li>
           <div className="divider"></div>
           <li>
             <Link to="/">Go to Website</Link>

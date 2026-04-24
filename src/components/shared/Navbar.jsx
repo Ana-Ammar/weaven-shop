@@ -30,13 +30,10 @@ export default function Navbar() {
         : 'bg-rich-base/95 border-b border-rich-card shadow-sm px-4 py-4 sm:px-6 lg:px-8 max-w-7xl'
         }`}>
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-sm btn-ghost lg:hidden">
+          <div className="lg:hidden">
+            <label htmlFor="main-drawer" aria-label="open sidebar" className="btn btn-sm btn-ghost">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-            </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-rich-card rounded-box w-52">
-              {navLinks}
-            </ul>
+            </label>
           </div>
           <Link to="/" className="text-2xl md:text-3xl font-extrabold text-rich-accent hover:text-rich-accent-hover hover:bg-transparent">Weaven</Link>
         </div>
@@ -45,7 +42,7 @@ export default function Navbar() {
             {navLinks}
           </ul>
         </div>
-        <div className="navbar-end gap-2">
+        <div className="navbar-end gap-2 hidden lg:flex">
           {user ? (
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar placeholder">

@@ -9,6 +9,7 @@ import Signup from "../pages/Signup";
 import Dashboard from "../pages/admin/Dashboard";
 import AdminProducts from "../pages/admin/AdminProducts";
 import AddProduct from "../pages/admin/AddProduct";
+import AdminBanners from "../pages/admin/AdminBanners";
 import AboutUs from "../components/home/AboutUs";
 
 export const router = createBrowserRouter([
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: "add-product",
         element: <AddProduct />,
+      },
+      {
+        path: "banners",
+        element: <AdminBanners />,
       }
     ]
   }
