@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import { LogOut, User } from "lucide-react";
@@ -17,20 +17,20 @@ export default function Navbar() {
 
   const navLinks = (
     <>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/products">All Products</Link></li>
-      <li><Link to="/about">About Us</Link></li>
+      <li><NavLink to="/">Home</NavLink></li>
+      <li><NavLink to="/products">All Products</NavLink></li>
+      <li><NavLink to="/about">About Us</NavLink></li>
     </>
   );
 
   return (
-    <div className={`sticky z-50 transition-all duration-300 ${isScrolled ? 'top-4 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8' : 'top-0 w-full'}`}>
-      <div className={`navbar backdrop-blur-md transition-all duration-300 mx-auto gap-4 ${isScrolled
-        ? 'bg-rich-base/80 border border-white/10 shadow-2xl rounded-3xl pr-2 md:px-4 py-2'
+    <div className={`md:sticky md:z-50 md:transition-all md:duration-300 ${isScrolled ? 'md:top-4 md:max-w-5xl md:mx-auto px-8' : 'top-0 w-full'}`}>
+      <div className={`navbar backdrop-blur-md transition-all duration-300 mx-auto gap-8 ${isScrolled
+        ? 'bg-rich-base/80 border border-white/10 shadow-2xl md:rounded-3xl md:px-4 md:py-2'
         : 'bg-rich-base/95 border-b border-rich-card shadow-sm px-4 py-4 sm:px-6 lg:px-8 max-w-7xl'
         }`}>
         <div className="navbar-start">
-          <div className="lg:hidden">
+          <div className="lg:hidden mr-4">
             <label htmlFor="main-drawer" aria-label="open sidebar" className="btn btn-sm btn-ghost">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
@@ -50,7 +50,7 @@ export default function Navbar() {
                   <span className="text-xl">{user?.displayName?.charAt(0) || 'U'}</span>
                 </div>
               </div>
-              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-rich-card rounded-box w-52">
+              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-rich-card rounded-box w-52">
                 <li className="px-4 py-2 font-semibold text-sm opacity-50 border-b">{user?.email}</li>
                 <li><Link to="/admin/dashboard"><User className="w-4 h-4" /> Admin Dashboard</Link></li>
                 <li><button onClick={logoutUser} className="text-error"><LogOut className="w-4 h-4" /> Logout</button></li>
@@ -58,7 +58,7 @@ export default function Navbar() {
             </div>
           ) : (
             <>
-              <Link to="/login" className="btn btn-ghost">Login</Link>
+              <Link to="/login" className="btn bg-transparent border-rich-accent text-rich-accent shadow-none hover:bg-rich-accent hover:text-white">Login</Link>
               <Link to="/signup" className="btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover">Sign Up</Link>
             </>
           )}

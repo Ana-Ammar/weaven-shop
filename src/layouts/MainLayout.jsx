@@ -16,12 +16,12 @@ export default function MainLayout() {
       <input id="main-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow">
+        <main>
           <Outlet />
         </main>
         <Footer />
       </div>
-      <div className="drawer-side z-[100]">
+      <div className="drawer-side z-100">
         <label htmlFor="main-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 min-h-full bg-rich-card text-rich-text space-y-4">
           <li><h2 className="text-2xl font-bold mb-2 text-rich-accent">Weaven</h2></li>
@@ -44,7 +44,7 @@ export default function MainLayout() {
             </>
           ) : (
             <>
-              <li><Link to="/login" onClick={closeDrawer} className="text-lg">Login</Link></li>
+              <li><Link to="/login" onClick={closeDrawer} className="btn bg-transparent border-rich-accent text-rich-accent shadow-none hover:bg-rich-accent hover:text-white">Login</Link></li>
               <li>
                 <Link to="/signup" onClick={closeDrawer} className="btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover mt-2">
                   Sign Up

@@ -12,6 +12,10 @@
 }
 
 body {
-  font-family: 'Belleza', sans-serif;
+  font-family: "Belleza", sans-serif;
   @apply bg-rich-base text-rich-text;
+}
+
+a.active {
+  @apply text-rich-accent
 }
