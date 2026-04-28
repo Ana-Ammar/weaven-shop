@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router";
 import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import { LogOut, User } from "lucide-react";
+import CartIcon from "../CartIcon";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,6 +44,7 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="navbar-end gap-2 hidden lg:flex">
+          <CartIcon />
           {user ? (
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar placeholder">

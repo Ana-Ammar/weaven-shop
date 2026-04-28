@@ -2,6 +2,8 @@ import { Outlet, Link } from "react-router";
 import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import useAuth from "../hooks/useAuth";
+import CartSidebar from "../components/CartSidebar";
+
 
 export default function MainLayout() {
   const { user, logoutUser } = useAuth();
@@ -21,6 +23,7 @@ export default function MainLayout() {
         </main>
         <Footer />
       </div>
+      <CartSidebar />
       <div className="drawer-side z-100">
         <label htmlFor="main-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 min-h-full bg-rich-card text-rich-text space-y-4">

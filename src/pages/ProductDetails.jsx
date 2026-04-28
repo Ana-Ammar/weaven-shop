@@ -3,9 +3,11 @@ import { useParams } from "react-router";
 import axios from "axios";
 import { ShoppingCart, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { useCart } from "../context/CartContext";
 
 export default function ProductDetails() {
   const { id } = useParams();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedSize, setSelectedSize] = useState('M');
@@ -47,6 +49,21 @@ export default function ProductDetails() {
     fetchProduct();
   }, [id]);
 
+
+  // Add to cart
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    addToCart({
+      id: product._id,
+      name: product.title,
+      price: product.price,
+      size: selectedSize,
+      image: product.imageUrl,
+      quantity: 1,
+    });
+  };
+
+
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center"><span className="loading loading-spinner loading-lg text-rich-accent"></span></div>;
   }
@@ -65,6 +82,7 @@ export default function ProductDetails() {
 
   const inStock = product.quantity > 0 || product.quantity === undefined;
   const displaySizes = product.sizes && product.sizes.length > 0 ? product.sizes : ['S', 'M', 'L', 'XL'];
+
 
   const handleWhatsapp = () => {
     window.open(`https://wa.me/1234567890?text=I'm%20interested%20in%20your%20product:%20${product.title}`, '_blank');
@@ -97,7 +115,7 @@ export default function ProductDetails() {
             ))}
           </div>
           {/* Main Image */}
-          <div className="w-full bg-rich-card rounded-2xl overflow-hidden aspect-[4/5] flex items-center justify-center">
+          <div className="w-full bg-rich-card rounded-2xl overflow-hidden aspect-4/5 flex items-center justify-center">
             <img src={mainImage} alt={product.title} className="w-full h-full object-cover" />
           </div>
         </motion.div>
@@ -156,7 +174,9 @@ export default function ProductDetails() {
 
           {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <button className="btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover flex-1 btn-lg" disabled={!inStock}>
+            <button
+              onClick={handleAddToCart}
+              className="btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover flex-1 btn-lg" disabled={!inStock}>
               <ShoppingCart className="w-5 h-5 mr-2" />
               {inStock ? "Add to Cart" : "Out of Stock"}
             </button>

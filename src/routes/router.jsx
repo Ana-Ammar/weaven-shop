@@ -11,6 +11,7 @@ import AdminProducts from "../pages/admin/AdminProducts";
 import AddProduct from "../pages/admin/AddProduct";
 import AdminBanners from "../pages/admin/AdminBanners";
 import AboutUs from "../components/home/AboutUs";
+import Checkout from "../pages/Checkout";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       }
     ]
   },

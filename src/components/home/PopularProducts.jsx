@@ -28,11 +28,11 @@ export default function PopularProducts() {
   }
 
   // Fallback if no products in DB yet
-  const displayProducts = products.length > 0 ? products : [
-    { _id: '1', title: 'Premium Cotton T-Shirt', price: 29.99, imageUrl: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=60', category: 'Men', isPopular: true },
-    { _id: '2', title: 'Elegant Summer Dress', price: 59.99, imageUrl: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=500&q=60', category: 'Women', isPopular: true },
-    { _id: '3', title: 'Classic Denim Jacket', price: 89.99, imageUrl: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=500&q=60', category: 'Unisex', isPopular: true },
-    { _id: '4', title: 'Comfy Sneakers', price: 79.99, imageUrl: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=500&q=60', category: 'Shoes', isPopular: true },
+  const demoProducts = [
+    { _id: '1', title: 'Premium Cotton T-Shirt', price: 29.99, imageUrl: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=60', category: 'Men', isPopular: true, quantity: 10, sizes: ['S', 'M', 'L', 'XL'], description: 'A premium cotton t-shirt.' },
+    { _id: '2', title: 'Elegant Summer Dress', price: 59.99, imageUrl: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=500&q=60', category: 'Women', isPopular: true, quantity: 5, sizes: ['S', 'M', 'L'], description: 'A beautiful summer dress.' },
+    { _id: '3', title: 'Classic Denim Jacket', price: 89.99, imageUrl: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=500&q=60', category: 'Unisex', isPopular: true, quantity: 0, sizes: ['M', 'L', 'XL'], description: 'A timeless denim jacket.' },
+    { _id: '4', title: 'Comfy Sneakers', price: 79.99, imageUrl: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=500&q=60', category: 'Shoes', isPopular: true, quantity: 20, sizes: ['S', 'M', 'L'], description: 'Comfortable everyday sneakers.' }
   ];
 
   return (
@@ -44,12 +44,12 @@ export default function PopularProducts() {
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-4xl font-bold mb-4">Trending Now</h2>
+        <h2 className="md:text-4xl text-2xl font-bold mb-4">Trending Now</h2>
         <p className="text-rich-text-muted max-w-2xl mx-auto">Discover our most popular picks loved by customers worldwide. Upgrade your wardrobe with these must-have items.</p>
       </motion.div>
-      
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {displayProducts.map((product, index) => (
+        {demoProducts.map((product, index) => (
           <motion.div
             key={product._id}
             initial={{ opacity: 0, y: 40 }}
