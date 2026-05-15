@@ -1,21 +1,7 @@
 import { Link } from "react-router";
-import { useCart } from "../../context/CartContext";
 
 export default function ProductCard({ product }) {
-  const { _id, title, price, imageUrl, size, isPopular, quantity } = product;
-  const { addToCart } = useCart();
-
-  const handleAddToCart = (e) => {
-    e.preventDefault(); // Prevent navigating to product details
-    addToCart({
-      id: _id,
-      name: title,
-      price: price,
-      size: size,
-      image: imageUrl,
-      quantity: 1,
-    });
-  };
+  const { _id, title, price, imageUrl,isPopular} = product;
 
   return (
     <Link to={`/product/${_id}`} className="card w-full bg-rich-card shadow-xl group overflow-hidden border border-rich-card hover:border-rich-accent transition-colors duration-300 flex flex-col h-full">
@@ -40,10 +26,9 @@ export default function ProductCard({ product }) {
           <p className="text-xl font-bold text-rich-accent">${price}</p>
           <div className="card-actions justify-end">
             <button
-              onClick={handleAddToCart}
-              className={`btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover btn-sm ${product.quantity <= 0 ? "disabled:bg-gray-400" : ""}`}
+              className="btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover btn-sm"
             >
-              {product.quantity > 0 ? "Add to Cart" : "Out of Stock"}
+              View Details
             </button>
           </div>
         </div>

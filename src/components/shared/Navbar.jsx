@@ -59,10 +59,7 @@ export default function Navbar() {
               </ul>
             </div>
           ) : (
-            <>
-              <Link to="/login" className="btn bg-transparent border-rich-accent text-rich-accent shadow-none hover:bg-rich-accent hover:text-white">Login</Link>
-              <Link to="/signup" className="btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover">Sign Up</Link>
-            </>
+            <Link to="/login" className="btn bg-transparent border-rich-accent text-rich-accent shadow-none hover:bg-rich-accent hover:text-white">Login</Link>
           )}
         </div>
       </div>

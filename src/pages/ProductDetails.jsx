@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import axios from "axios";
 import { ShoppingCart, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../hooks/useCart";
+import useAxios from "../hooks/useAxios";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -12,6 +12,7 @@ export default function ProductDetails() {
   const [loading, setLoading] = useState(true);
   const [selectedSize, setSelectedSize] = useState('M');
   const [quantity, setQuantity] = useState(1);
+  const axios = useAxios();
 
   // Use the same image multiple times since user requested placeholders to save DB space
   const [mainImage, setMainImage] = useState("");
@@ -19,10 +20,10 @@ export default function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/products/${id}`);
+        const response = await axios.get(`/products/${id}`);
         setProduct(response.data);
         setMainImage(response.data.imageUrl);
-      } catch (error) {
+      } catch {
         console.error("Failed to fetch product from API, using fallback data if available.");
         // Fallback for demo products
         const demoProducts = [
@@ -47,7 +48,7 @@ export default function ProductDetails() {
     };
 
     fetchProduct();
-  }, [id]);
+  }, [id, axios]);
 
 
   // Add to cart
@@ -88,9 +89,9 @@ export default function ProductDetails() {
     window.open(`https://wa.me/1234567890?text=I'm%20interested%20in%20your%20product:%20${product.title}`, '_blank');
   };
 
-  const handleFacebook = () => {
-    window.open(`https://m.me/yourfacebookpage`, '_blank');
-  };
+  // const handleFacebook = () => {
+  //   window.open(`https://m.me/yourfacebookpage`, '_blank');
+  // };
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 min-h-[80vh]">

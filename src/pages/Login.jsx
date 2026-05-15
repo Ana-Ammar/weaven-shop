@@ -1,10 +1,11 @@
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router";
+
+import { useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import { motion } from "framer-motion";
+import { FcGoogle } from "react-icons/fc";
+
 
 export default function Login() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
   const { loginUser } = useAuth();
   const navigate = useNavigate();
 
@@ -19,60 +20,44 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center bg-rich-base py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-[80vh] flex items-center justify-center bg-rich-base py-12 px-4">
       <motion.div
-        className="flex-col w-full max-w-md"
-        initial={{ opacity: 0, y: 40 }}
+        className="w-full max-w-[420px]"
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
+        {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">Access your account to manage your orders and wishlist.</p>
+          <h1 className="text-4xl font-bold text-[#f0e6d0] tracking-tight mb-2">
+            Login now!
+          </h1>
+          <p className="text-sm text-[#7a9ab5]">
+            Access your account to manage your orders and wishlist.
+          </p>
         </div>
+
+        {/* Card */}
         <motion.div
-          className="card w-full shadow-2xl bg-rich-card"
-          initial={{ opacity: 0, scale: 0.95 }}
+          className="bg-[#142233] border border-[#1e3247] rounded-2xl px-8 py-8"
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.15 }}
         >
-          <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input 
-                type="email" 
-                placeholder="email" 
-                className="input input-bordered bg-rich-base border-rich-card-hover text-rich-text" 
-                {...register("email", { required: true })}
-              />
-              {errors.email && <span className="text-error text-sm mt-1">Email is required</span>}
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input 
-                type="password" 
-                placeholder="password" 
-                className="input input-bordered bg-rich-base border-rich-card-hover text-rich-text" 
-                {...register("password", { required: true })}
-              />
-              {errors.password && <span className="text-error text-sm mt-1">Password is required</span>}
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-              </label>
-            </div>
-            <div className="form-control mt-6">
-              <button className="btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover" type="submit">Login</button>
-            </div>
-            <p className="text-center text-sm mt-4">
-              Don't have an account? <Link to="/signup" className="text-rich-accent font-bold hover:underline">Sign up</Link>
-            </p>
-          </form>
+          <button
+            type="button"
+            // onClick={handleGoogleLogin}
+            className="
+              w-full flex items-center justify-center gap-3 py-2.5 rounded-lg
+              bg-white hover:bg-gray-100 active:scale-[0.98]
+              text-gray-700 text-sm font-semibold
+              transition-all duration-200 cursor-pointer"
+          >
+            <FcGoogle size={20} />
+            Continue with Google
+          </button>
         </motion.div>
-      </motion.div>
-    </div>
+      </motion.div >
+    </div >
   );
 }

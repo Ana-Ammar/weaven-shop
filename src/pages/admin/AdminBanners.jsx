@@ -201,7 +201,7 @@ export default function AdminBanners() {
                 />
               </div>
 
-              <div className="form-control w-full">
+              <div className="form-control flex flex-col">
                 <label className="label"><span className="label-text text-rich-text font-medium">Mini Paragraph (Subtitle)</span></label>
                 <textarea
                   name="subtitle"
@@ -209,7 +209,7 @@ export default function AdminBanners() {
                   onChange={handleChange}
                   required
                   placeholder="e.g. Discover the latest trends..."
-                  className="textarea textarea-bordered h-24 bg-rich-base text-rich-text border-rich-card-hover"
+                  className="textarea textarea-bordered h-24 w-full bg-rich-base text-rich-text border-rich-card-hover"
                 ></textarea>
               </div>
 
@@ -254,7 +254,7 @@ export default function AdminBanners() {
               </div>
 
               <div className="modal-action mt-6">
-                <button type="button" onClick={handleCloseModal} className="btn bg-rich-base text-rich-text border-none hover:bg-rich-card-hover">Cancel</button>
+                <button type="button" onClick={handleCloseModal} className="btn shadow-none bg-rich-base text-rich-text border-none hover:bg-rich-card-hover">Cancel</button>
                 <button type="submit" disabled={submitting} className={`btn bg-rich-accent text-white border-none shadow-none hover:bg-rich-accent-hover ${submitting ? 'loading' : ''}`}>
                   {editingId ? 'Save Changes' : 'Add Banner'}
                 </button>

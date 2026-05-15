@@ -5,7 +5,6 @@ import Home from "../pages/Home";
 import Products from "../pages/Products";
 import ProductDetails from "../pages/ProductDetails";
 import Login from "../pages/Login";
-import Signup from "../pages/Signup";
 import Dashboard from "../pages/admin/Dashboard";
 import AdminProducts from "../pages/admin/AdminProducts";
 import AddProduct from "../pages/admin/AddProduct";
@@ -37,10 +36,6 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
-      },
-      {
-        path: "/signup",
-        element: <Signup />,
       },
       {
         path: "/checkout",

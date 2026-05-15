@@ -45,10 +45,10 @@ export default function AdminProducts() {
       </div>
 
       <div className="bg-rich-card rounded-xl shadow overflow-hidden">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mx-auto w-full">
           <table className="table w-full">
             <thead>
-              <tr>
+              <tr className="text-white font-bold text-lg">
                 <th>Image</th>
                 <th>Title</th>
                 <th>Category</th>

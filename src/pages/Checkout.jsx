@@ -1,7 +1,7 @@
 import { Link } from "react-router";
-import { useCart } from "../context/CartContext";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
+import { useCart } from "../hooks/useCart";
 
 export default function Checkout() {
   const { cartItems, cartTotal, clearCart } = useCart();

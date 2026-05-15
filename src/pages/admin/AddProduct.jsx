@@ -76,9 +76,6 @@ export default function AddProduct() {
                 <option value="">Select Category</option>
                 <option value="Men">Men</option>
                 <option value="Women">Women</option>
-                <option value="Unisex">Unisex</option>
-                <option value="Shoes">Shoes</option>
-                <option value="Accessories">Accessories</option>
               </select>
               {errors.category && <span className="text-error text-sm mt-1">Category is required</span>}
             </div>
@@ -118,10 +115,10 @@ export default function AddProduct() {
             {errors.imageUrl && <span className="text-error text-sm mt-1">Image URL is required</span>}
           </div>
 
-          <div className="form-control">
+          <div className="form-control flex flex-col">
             <label className="label"><span className="label-text font-semibold">Description</span></label>
             <textarea 
-              className="textarea textarea-bordered h-24 bg-rich-base border-rich-card-hover text-rich-text" 
+              className="textarea textarea-bordered h-24 w-full bg-rich-base border-rich-card-hover text-rich-text" 
               placeholder="Product description..."
               {...register("description", { required: true })}
             ></textarea>

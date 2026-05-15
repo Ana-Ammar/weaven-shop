@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { X, ShoppingBag } from "lucide-react";
-import { useCart } from "../context/CartContext";
 import CartItem from "./CartItem";
+import { useCart } from "../hooks/useCart";
 
 export default function CartSidebar() {
   const { cartItems, cartTotal, cartCount, clearCart } = useCart();

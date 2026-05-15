@@ -7,19 +7,19 @@ export default function Dashboard() {
         <div className="stat bg-rich-card shadow rounded-xl border-t-4 border-rich-accent">
           <div className="stat-title text-rich-text-muted">Total Products</div>
           <div className="stat-value text-rich-accent">124</div>
-          <div className="stat-desc">21% more than last month</div>
+          <div className="stat-desc text-amber-50">21% more than last month</div>
         </div>
         
         <div className="stat bg-rich-card shadow rounded-xl border-t-4 border-rich-text-muted">
           <div className="stat-title text-rich-text-muted">Total Sales</div>
           <div className="stat-value text-rich-text-muted">$14,200</div>
-          <div className="stat-desc">4% more than last month</div>
+          <div className="stat-desc text-amber-50">4% more than last month</div>
         </div>
         
         <div className="stat bg-rich-card shadow rounded-xl border-t-4 border-rich-accent-hover">
           <div className="stat-title text-rich-text-muted">Active Users</div>
           <div className="stat-value text-rich-accent-hover">1,200</div>
-          <div className="stat-desc">8% more than last month</div>
+          <div className="stat-desc text-amber-50">8% more than last month</div>
         </div>
       </div>
 
@@ -27,8 +27,8 @@ export default function Dashboard() {
         <h2 className="text-xl font-bold mb-4">Recent Orders</h2>
         <div className="overflow-x-auto">
           <table className="table w-full">
-            <thead>
-              <tr>
+            <thead className="">
+              <tr className="text-white font-bold text-lg">
                 <th>Order ID</th>
                 <th>Customer</th>
                 <th>Date</th>

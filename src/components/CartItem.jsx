@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import { useCart } from "../context/CartContext";
 import { Trash2, Plus, Minus } from "lucide-react";
+import { useCart } from "../hooks/useCart";
 
 export default function CartItem({ item }) {
   const { removeFromCart, increaseQty, decreaseQty } = useCart();
@@ -26,7 +26,7 @@ export default function CartItem({ item }) {
         {/* Quantity Controls */}
         <div className="flex items-center border border-rich-card rounded-md bg-rich-card">
           <button
-            onClick={() => decreaseQty(item.id)}
+            onClick={() => decreaseQty(item)}
             className="p-1 hover:bg-rich-base text-rich-text transition-colors rounded-l-md disabled:opacity-50"
             disabled={item.quantity <= 1}
             aria-label="Decrease quantity"
@@ -37,7 +37,7 @@ export default function CartItem({ item }) {
             {item.quantity}
           </span>
           <button
-            onClick={() => increaseQty(item.id)}
+            onClick={() => increaseQty(item)}
             className="p-1 hover:bg-rich-base text-rich-text transition-colors rounded-r-md"
             aria-label="Increase quantity"
           >
@@ -47,7 +47,7 @@ export default function CartItem({ item }) {
 
         {/* Remove Button */}
         <button
-          onClick={() => removeFromCart(item.id)}
+          onClick={() => removeFromCart(item)}
           className="p-2 text-error hover:bg-error/10 rounded-full transition-colors"
           title="Remove from cart"
           aria-label="Remove item"
